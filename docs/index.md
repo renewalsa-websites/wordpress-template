@@ -5,8 +5,6 @@ layout: home
 
 # Renewal SA WordPress Template Docs
 
-T# WordPress Boilerplate
-
 The WordPress boilerplate acts as a blank canvas to allow agencies to easily spin up new WordPress projects that conform with requirements for Renewal SA and the Platform.sh hosting environment that sites are deployed to.
 
 This repository is intended to be cloned, then detached from this git remote.  You are free to change from there as you see fit - there is no need to keep this repo as an upstream dependency, the project is not designed to "ship updates". 
@@ -15,7 +13,7 @@ This repository is intended to be cloned, then detached from this git remote.  Y
 
 ### Clone and init your repository
 To utilise this project, clone the git repo to your local machine, remove the current git repo and initialise a new one. Renewal SA should provide you with a repository within their GitHub organisation to act as the primary `origin` remote. 
-```Bash
+```bash
 # Clone the Repo
 git clone https://github.com/renewalsa-websites/wordpress-template.git my-project
 # Navigate into the project folder
@@ -54,7 +52,7 @@ Sample `auth.json`
 
 Once you have the appropriate credentials, you can utilise composer to install WordPress core and the starter plugins from this boilerplate. 
 
-```Bash
+```bash
 # Assumed current working directory is 'my-project' or the project root
 
 #Install WordPress and Plugins
