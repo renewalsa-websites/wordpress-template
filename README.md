@@ -1,48 +1,120 @@
-# Frame Boilerplate
+# WordPress Boilerplate
 
-## Setup DB and content directories
+The WordPress boilerplate acts as a blank canvas to allow agencies to easily spin up new WordPress projects that conform with requirements for Renewal SA and the Platform.sh hosting environment that sites are deployed to.
 
-Create new database and import SQL file from data/db.
-mainframe-lean.sql is a barebones version with only a home page and plugins activated and configured.
-mainframe-populated.sql is populated with some content and a few posts, for when a site is needed for a quick spinup.
+This repository is intended to be cloned, then detached from this git remote.  You are free to change from there as you see fit - there is no need to keep this repo as an upstream dependency, the project is not designed to "ship updates". 
 
-Move uploads directory from data to site/content
+## Getting started
 
-## First Run
+### Clone and init your repository
+To utilise this project, clone the git repo to your local machine, remove the current git repo and initialise a new one. Renewal SA should provide you with a repository within their GitHub organisation to act as the primary `origin` remote. 
+```Bash
+# Clone the Repo
+git clone https://github.com/renewalsa-websites/wordpress-template.git my-project
+# Navigate into the project folder
+cd my-project
+# Remove the current git repo
+rm -rf .git/
+# Start a new git repo
+git init
+# Initial Commit
+git add .
+git commit -m "Initial commit"
 
-Update composer and node dependencies
+# Add git remote in Renewalsa websites organisation (to be provided to you)
+# Push initial code to the remote
+git remote add origin https://github.com/renewalsa-websites/my-project.git
+git branch -M master
+git push -u origin master
 
-`composer update && yarn upgrade` or `composer update && npm update`
+```
 
-Or just install the current versions
+### Install WordPress and plugins
 
-`composer install && yarn` or `composer install && npm install`
+Edit the `auth.json` file to update the credentials for the private Renewal SA plugins repository. These credentials will be provided to you. This will be necessary to access and install any of the plugins in the `renewalsa-plugins` vendor namespace. Renewal SA utilises this for paid 3rd party preferred plugins such as Advanced Custom Fields, Gravity Forms, SearchWP and more.
 
-## Start
+Sample `auth.json`
+```
+{
+    "http-basic": {
+        "composer.renewalsa.sa.gov.au": {
+            "username": "CONTACT RSA IT FOR YOUR KEY",
+            "password": "satispress"
+        }
+    }
+}
+```
 
-Setup webroot in Homestead or Valet to `site` folder
+Once you have the appropriate credentials, you can utilise composer to install WordPress core and the starter plugins from this boilerplate. 
 
-Start and watch front-end assets
+```Bash
+# Assumed current working directory is 'my-project' or the project root
 
-`yarn start` or `npm start`
+#Install WordPress and Plugins
+composer install
 
-# Using Typescript
+#Update them to the latest version
+composer update
 
-If using TypeScript, rename app.js to app.ts. The TypeScript compiler (tsc) will then handle the file and then pipe through the standard js pipeline (Babel, Uglify etc).
+#Check for outdated plugins and packages
+composer outdated
+```
 
-To take advantage of TypeScript autocomplete + checking with various libraries, install the corresponding TypeScript type definition file by running one of the following:
+By utilising composer, we can be sure that the exact same versions of WordPress and Plugins are utilised between local, UAT, and Live Environments. 
 
-`npm install -D @types/jquery`
-`npm install -D @types/lodash`
-`npm install -D @types/underscore`
+It also allows us to track the addition of any new plugin to the site in version control, as required by Renewal SA.
 
-Many type definitions are available. See them all at https://github.com/DefinitelyTyped/DefinitelyTyped .
+### Finishing the setup
+Finally to finish the setup, we need to add out database credentials to the current site. For local development we use a `.env` file. Any enviornment on Platform.sh will have these environment variables injected into the runtime, and these can be managed from Platform.sh via the CLI or control panel.
 
-## Pre-launch template checklist
+For local dev
+```bash
+# Copy the example .env.example file
+cp .env.example .env
 
-- [ ] 404 page
-- [ ] Fav icons
-- [ ] Privacy/Terms page
-- [ ] Analytics Setup
-- [ ] h1 on every page
-- [ ] Site is tested across browsers >=IE9
+# Edit the .env using VSCode, Vim, Nano, whatever works for you...
+```
+
+### Development Environment
+This project will work fine with many different development environments. We recommend Laravel Valet, or DDev.
+
+The specifics of getting this project running in the environment are not covered in this guide - it is assumed the devs will have sufficient knowledge of their environment to make it work.
+
+One important point is that the `site` folder should be the webroot.
+
+Laravel Valet users may be interested in this Enhanced WordPress Driver which is designed to deal with composer / bedrock style WordPress sites.
+
+## A starting point
+This boilerplate is intentionally sparse in order to not force a particular toolchain onto developers. It is mainly concerned with the structure of the project, and the use of composer for managing WordPress, Plugins and 3rd party libraries.
+
+### Key principles
+This project is based around the following principles
+- Track all code for the project in version control
+- Keep 3rd party dependency code (WordPress core, Plugins) out of the repo
+- Utilise Composer with a Bedrock like setup with WordPress in a subdirectory
+- Include some mandatory plugins for security and compliance
+
+### Building your site
+This project does not provide a theme or dictate your front-end toolchain. 
+
+It is recommended/highly preferred to create a WordPress theme from scratch for each project vs using commercial themes.
+
+In most modern projects there will be some kind of processing of javascript, css files etc - you are free to implement what you choose. Tailwind.css is a good recommendation for styling though you will often need to use the `@apply` rules to target markup provided by plugins.
+
+Please see [Best Practices](#) for more information on recommended development practices.
+
+## Next Steps
+
+### Develop your site
+The site should be developed locally by the developers, with changes committed to git and pushed to GitHub
+
+Please see [Best Practices](#) for more information on recommended development practices.
+
+### Deploy to Platform.sh
+When it is time to show the client, it's reccomended to deploy to the Platform.sh server for previewing etc.
+
+The default deployment on platform.sh runs off the `live` branch of the connected repository. Push your changes to a branch called `live` to trigger the deployment.
+
+After the site is live, you should create and use the `uat` branch first for testing and to get sign-off on any changes, and then push to `live` when you are satisfied.
+
+Please see [Deploying to Platform.sh] for more detail.
