@@ -13,6 +13,8 @@
 /bower_components
 /node_modules
 
+.platform/local
+
 site/.htaccess
 site/mix-manifest.json
 site/wordpress
