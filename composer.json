@@ -31,7 +31,7 @@
         "wpackagist-plugin/safe-svg": "^2.0",
 
         "renewalsa-plugins/wp-migrate-db-pro": "^2.0",
-        "renewalsa-plugins/advanced-custom-fields-pro": "^6.0.7",
+        "renewalsa-plugins/advanced-custom-fields-pro": "^6.0.7"
     },
     "extra": {
         "wordpress-install-dir": "site/wordpress",
