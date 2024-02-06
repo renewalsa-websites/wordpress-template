@@ -4,6 +4,8 @@ layout: default
 nav_order: 3
 ---
 
+# Working with composer
+
 Using Composer to manage dependencies is one of the core tenets of modern PHP development, and this should apply to WordPress sites as well.
 
 WordPress is itself a 3rd-party dependency of your project, as are WordPress plugins, as such the source code should not be directly committed to version control. This is effectively a given in every other software language, along with Modern PHP projects and systems such as Craft CMS, Laravel, Symfony etc

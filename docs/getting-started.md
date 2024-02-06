@@ -3,6 +3,7 @@ title: Getting started
 layout: default
 nav_order: 2
 ---
+# Getting started
 
 ### Clone and init your repository
 To utilise this project, clone the git repo to your local machine, remove the current git repo and initialise a new one. Renewal SA should provide you with a repository within their GitHub organisation to act as the primary `origin` remote. 
