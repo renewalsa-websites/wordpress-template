@@ -103,12 +103,12 @@ All directive example
 # Each route describes how an incoming URL is going
 # to be processed by Platform.sh.
 
-"https://{all}/":
+'https://{all}/':
     type: upstream
     upstream: "your-app-name:http"
-	# Add cache / other options as needed
+# Add cache / other options as needed
 
-"https://www.{all}/":
+"https://www.{all}/" :
     type: redirect
     to: "https://{all}/"
 ```
