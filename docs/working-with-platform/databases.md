@@ -28,7 +28,7 @@ db:
 ```
 
 If you need to increase the size of the DB disk, it can be done via this file.
-{: .warning }
+{: .info}
 Please be aware that the disk size of the DB counts towards the total disk usage for the project. Projects will fail to deploy if the **combined** requested disk size is over the total allowance for the project.
 
 ## Accessing databases and services
@@ -37,7 +37,7 @@ Each environment will have their own instance of the associated app's services. 
 
 Because of this stateful data, there is often a need to pull down this data to help with local development. In limited cases, there is also a need to push new data up to these services, and both of these can be accomplished easily using the platform.sh CLI.
 
-{: .info }
+{: .warning }
 If you find yourself repeatedly needing to push data to the live DB after the initial launch, this is generally a sign to work on your process. The platform.sh environment is built around a "Code up, data down" workflow.
 
 ### Downloading the database
