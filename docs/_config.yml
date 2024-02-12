@@ -13,7 +13,7 @@ callouts:
   warning:
     title: Warning
     color: red
-  highlight:
+  info:
     title: Info
     color: yellow
   note:
