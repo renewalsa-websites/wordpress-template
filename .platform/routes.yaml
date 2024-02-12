@@ -7,7 +7,8 @@
     type: upstream
     upstream: "your-app-name:http"
     cache:
-        enabled: true
+        # Set to true when ready to go live
+        enabled: false
         # Base the cache on the session cookies. Ignore all other cookies.
         cookies:
             - '/^wordpress_logged_in_/'
