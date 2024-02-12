@@ -180,7 +180,7 @@ mounts:
         source_path: 'uploads'
 ```
  
- ## First deployment
+## First deployment
 
 When first deploying the site you will need to upload the database and uploads to the platform.sh DB and mounted file system.
 
