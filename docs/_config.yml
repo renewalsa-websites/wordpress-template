@@ -8,3 +8,18 @@ logo: "/assets/renewalsa-logo.png"
 
 aux_links:
   Template Repository: https://github.com/renewalsa-websites/wordpress-template
+
+callouts:
+  warning:
+    title: Warning
+    color: red
+  highlight:
+    title: Info
+    color: yellow
+  note:
+    title: Note
+    color: blue
+  new:
+    title: New
+    color: green
+
