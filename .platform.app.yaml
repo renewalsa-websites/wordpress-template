@@ -124,9 +124,10 @@ web:
 
 
 # The size of the persistent disk of the application (in MB). Minimum value is 128.
-disk: 512
+# Default projects have 5GB of storage, we allocate 4608MB to mounts / uploads, and 512 to DB disk.
+disk: 4608
 
-# The following block defines a single writable directory, 'web/uploads'
+# The following block defines a writable directory, 'site/content/uploads'
 # The 'source' specifies where the writable mount is. The 'local' source
 # indicates that the mount point will point to a local directory on the
 # application container. The 'source_path' specifies the subdirectory
