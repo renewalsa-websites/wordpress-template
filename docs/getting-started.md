@@ -81,4 +81,4 @@ The specifics of getting this project running in the environment are not covered
 
 One important point is that the `site` folder should be the webroot.
 
-Laravel Valet users may be interested in this Enhanced WordPress Driver which is designed to deal with composer / bedrock style WordPress sites.
+Laravel Valet users may be interested in this [Enhanced WordPress Driver](https://github.com/framecreative/frame-valet-drivers) which is designed to deal with composer / bedrock style WordPress sites.
