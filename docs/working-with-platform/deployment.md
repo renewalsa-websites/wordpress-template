@@ -185,3 +185,9 @@ mounts:
 When first deploying the site you will need to upload the database and uploads to the platform.sh DB and mounted file system.
 
 These actions are easily accomplushed via the CLI, pelase see the [databases]("/working-with-platform/databases") and [storage]("/working-with-platform/storage") docs for instructions on how to upload data and files.
+
+## Going Live
+
+When launching the site, the main responsibility will be changing the primary domain of the project. This can be done via the Console or CLI.
+
+It is reccomended that you check over General Settings - `https://console.platform.sh/renewal-sa/your-project-id/live/settings` as well to ensure this is all as intended, ie: search engines allowed.

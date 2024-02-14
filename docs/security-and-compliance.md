@@ -1,9 +1,9 @@
 ---
-title: Best practice and compliance
+title: Security and compliance
 layout: default
 nav_order: 5
 ---
-# Best Practice and Compliance
+# Security and Compliance
 
 ## Compliance
 This documentation offers some helpful practical tips for complying with the standards, but first and foremost the point of truth for all compliance and standards are the SA Government's own documentation. 

@@ -64,7 +64,9 @@ By utilising composer, we can be sure that the exact same versions of WordPress 
 It also allows us to track the addition of any new plugin to the site in version control, as required by Renewal SA.
 
 ### Finishing the setup
-Finally to finish the setup, we need to add out database credentials to the current site. For local development we use a `.env` file. Any enviornment on Platform.sh will have these environment variables injected into the runtime, and these can be managed from Platform.sh via the CLI or control panel.
+Finally to finish the setup, we need to add our database credentials to the current site. It is up to you to create the database and associated user necessary for this, as the method for doing so will vary depending on your development environment.
+
+For local development we use a `.env` file. Any enviornment on Platform.sh will have these environment variables injected into the runtime, and these can be managed from Platform.sh via the CLI or control panel.
 
 For local dev
 ```bash
@@ -74,8 +76,10 @@ cp .env.example .env
 # Edit the .env using VSCode, Vim, Nano, whatever works for you...
 ```
 
+Finally you will need to run the WordPress install to populate the database etc
+
 ### Development Environment
-This project will work fine with many different development environments. We recommend Laravel Valet, or DDev.
+This project will work fine with many different development environments. We recommend [Laravel Valet](https://laravel.com/docs/10.x/valet), or [DDev](https://ddev.com/).
 
 The specifics of getting this project running in the environment are not covered in this guide - it is assumed the devs will have sufficient knowledge of their environment to make it work.
 
