@@ -13,9 +13,11 @@ Setting up a new project in Platform.sh is traditionally the role of Renewal SA'
 
 When creating a new project, the following configuration is required.
 
-Production environment name: `live`
-Region: Australia (au-2) Azure
-Organization: Renewal SA Enterprise
+|Platform SH Config Name  | Value  |
+|--|--|
+|Production environment name:  |  `live` |
+|Region: | Australia (au-2) Azure |
+|Organization: | Renewal SA Enterprise |
 
 ## Connect your git repository
 
