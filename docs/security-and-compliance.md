@@ -1,44 +1,45 @@
 ---
-title: Patching and maintenance
+title: Security and compliance
 layout: default
-nav_order: 6
+nav_order: 5
 ---
-# Patching and maintenance
+# Security and Compliance
 
-Maintaining the security and compliance of an application is an ongoing process, which is expected to involve regular updates and patches in response to new version being published and vulnerabilities being discovered and mitigated within the application's core and dependencies such as plugins.
+## Compliance
+This documentation offers some helpful practical tips for complying with the standards, but first and foremost the point of truth for all compliance and standards are the SA Government's own documentation. 
 
-Whether the application is being maintained by the original developers, or another party, the following standards should be adhered to when performing regular updates. Please consider the following requirements when quoting and proposing a maintenance plan for your Renewal SA project.
+At the time of writing these are summarised in the [SACSF-S4-16-Secure-Web-Service-Standard.pdf](/assets/SACSF-S4-16-Secure-Web-Service-Standard.pdf) document and supporting documents.
 
-## General Updates and Patching
+Government websites are required to be accessible - with sites complying with either [WCAG 2.0](https://www.w3.org/TR/WCAG20/) at Level A or Level AA.
 
-Maintenance and upgrades should be performed fortnightly. All dependencies and libraries should be upgraded to the most recent possible *minor versions*  as defined by SemVar.
+Performance is also a form of accessibility - slow sites with huge bandwidth requirements discriminate against people with older devices or slower internet connections. All sites should score 85 or higher in [Google Lighthouse](https://developer.chrome.com/docs/lighthouse/overview) for both Mobile or Desktop.
 
-- Major version upgrades should also be attempted if possible, but these may require more planning, additional remediation for breaking changes to the application etc 
-- In a case where there is a mix of Major and Minor versions to upgrade to, it is the minimum requirement that the Minor versions upgrades take place, with the Major version upgrades flagged for later review. 
-- The deployment of Minor version updates should not be delayed by remediation work required for a Major version update.
+### Security 
+To help meet the security requirements this project comes with some plugins in the `composer.json`. 
 
-This base requirement acts as the *general rule* for upgrades and patching for applications, but is superseded in certain cases relating to known CVEs or vulnerabilities.
+ - WP 2FA for Two Factor Authentication (mandatory for all admins)
+ - WordPress Password bCrypt to ensure srong hashing of passwords
+ - Disable Comments to turn off comment functionality and reduce possible attack vectors
+ - WP Security Audit Log Premium to log user activity within the site
+ - Limit Logins Attempt (reloaded) to prevent brute force attacks against user passwords
 
-## Published CVEs and security vulnerabilities
+These plugins must be activated and configured in order to work properly.
 
-When a component of the application has a published vulnerability, this should be patched and addressed within 48hrs. It is expected that in almost all cases, these patches will come from the vendor of the library / CMS / dependency. 
+ - WP Security Audit Log should be setup so that only one user can see / clear the log
+ - Disable Comments should be set to turn comments off for everything
+ - WP 2FA must be configured to require 2FA for all Admin users, it is recommended for editor users as well or any user level that can access Personally Identifiable Information such as form submissions.
 
-If a package is unmaintained, then the maintenance provider should suggest a way forward. This may involve replacing it with a maintained and secure dependency, or to patch the existing dependency by maintaining a fork or contributing upstream if possible, and outline any costs associated with this. 
+For security reasons, and to work with Platform.SH, some parts of the WordPress admin are disabled
+- The theme editor is disabled
+- The plugin editor is disabled
+- Any plugin that allows the user to edit the file system via the admin is banned
+- The installation of plugins via the admin is banned
 
-Such events are rare, and are typically considered outside the scope of the normal maintenance agreement, though this varies by supplier - any contractual agreements supersedes the general advice and assumptions provided here.
+### Change management and version control
+The use of version control is mandatory for the development of websites, and our partners are encourage to pick approaches that promote a separation of concerns between structure and content, with structure being managed and tracked via code, and content is kept in the database.
 
-If a vulnerability is discovered within the first-party code (ie: application code written by the original developer of the site) then it is expected that this will be mitigated or fixed within 48hrs of discovery and reporting. 
+Some practical examples of this include
 
-The costs of this mitigation may be covered by the original developer's warranty, or be considered an out of scope item, depending on the terms of the governing contract.
-
-## Automatic Updates
-
-Due to the read-only nature of the filesystem on Platform.sh, any "auto update" functionality built into the CMS will not function. All updates must be performed locally, with the resulting changes to `composer.lock` committed to the repository.
-
-## Maintenance Process and Procedures
-
-Both approved CMS systems track all versions and dependencies via Composer - allowing for easy auditing of the versions of each dependency utilised by the application.
-
-All updates should be performed locally, with the resulting changes committed to the git repo. 
-
-All changes must then be deployed to UAT and tested on the UAT environment before progressing to the live environment.
+ - Using ACF (with field definitions tracked in `acf-json` or defined in code) vs a Page Builder
+ - Define custom posts and taxonomies in code vs via a plugin
+ - Layouts and Styling being defined via the theme template files and css vs a Page Builder
