@@ -21,9 +21,15 @@ This base requirement acts as the *general rule* for upgrades and patching for a
 
 ## Published CVEs and security vulnerabilities
 
-When a component of the application has a published vulnerability, this should be patched and addressed within 48hrs. It is expected that in almost all cases, these patches will come from the vendor of the library / CMS / dependency. If a package is unmaintained, then the maintenance provider should suggest a way forward. This may involve replacing it with a maintained and secure dependency, or to patch the existing dependency by maintaining a fork or contributing upstream if possible, and outline any costs associated with this. Such events are rare, and are typically considered outside the scope of the normal maintenance agreement, though this varies by supplier - any contractual agreements supersedes the general advice and assumptions provided here.
+When a component of the application has a published vulnerability, this should be patched and addressed within 48hrs. It is expected that in almost all cases, these patches will come from the vendor of the library / CMS / dependency. 
 
-If a vulnerability is discovered within the first-party code (ie: application code written by the original developer of the site) then it is expected that this will be mitigated or fixed within 48hrs of discovery and reporting. The costs of this mitigation may be covered by the original developer's warranty, or be considered an out of scope item, depending on the terms of the governing contract.
+If a package is unmaintained, then the maintenance provider should suggest a way forward. This may involve replacing it with a maintained and secure dependency, or to patch the existing dependency by maintaining a fork or contributing upstream if possible, and outline any costs associated with this. 
+
+Such events are rare, and are typically considered outside the scope of the normal maintenance agreement, though this varies by supplier - any contractual agreements supersedes the general advice and assumptions provided here.
+
+If a vulnerability is discovered within the first-party code (ie: application code written by the original developer of the site) then it is expected that this will be mitigated or fixed within 48hrs of discovery and reporting. 
+
+The costs of this mitigation may be covered by the original developer's warranty, or be considered an out of scope item, depending on the terms of the governing contract.
 
 ## Automatic Updates
 
