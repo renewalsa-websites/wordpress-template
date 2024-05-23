@@ -1,7 +1,7 @@
 ---
 title: Working with Platform.sh
 layout: default
-nav_order: 6
+nav_order: 8
 has_children: true
 has_toc: true
 ---
